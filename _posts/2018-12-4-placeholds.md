@@ -20,7 +20,7 @@ tags:
 
 **2.添加远程库**  
 
-  * 第一种方法：直接Clone with HTTPS链接到本地
+  * 第一种方法：直接Clone with HTTPS链接到本地  
   		`git clone https://github.com/shpyoucan/shpyoucan.github.io.git`
   
   * 第二种方法：
@@ -50,7 +50,7 @@ tags:
   	 * 将缓存区管理的所有文件清除： `git rm -r --cached .` 
   	 * 将工作区文件重新add到缓存区，此时就会按照.gitignore规则add： `git add .`
   	 * 更新本地库git管理的文件： `git commit -m 'update .gitignore'`
-  	 * 更新远程库git管理的文件： `git push` 
+  	 * 更新远程库git管理的文件： `git push`  
    
    
 **4.添加文件到远程仓库**  
@@ -64,6 +64,27 @@ tags:
    * `git merge newBranch` 将master分支和newBranch合并
      1. 出现 *Merge branch 'branchName'*，是提示合并时，需要输入合并记录，执行 `i` 进入可编辑，编辑完按键盘 `Esc` 键退出编辑状态，之后执行 `:wq` (退出不了就执行 `:wq!` ) 退出信息记录界面。此时，再执行 `git push` 将本地库更新到远程库即可。
      2. 如果没有出1的情况，出现 *Merge conflict in xxxx* , 这是提示有冲突，用 `git status` 查看哪些文件有冲突（both modified：xxxx ），解决完冲突，执行 `git add .` ，再执行 `git commit -m "冲突记录"` 更新本地库，最后执行 `git push` 将本地库更新到远程库
+
+
+**5.分支操作**  
+
+  * 创建分支：git branch branchName
+  * 切换分支：git checkout branchName
+  * 合并某分支到主分支：先切换主分支 git checkout masterBranch ; 再合并某分支到主分支 git merge branchName
+  * 删除分支：git branch -d branchName
+
+**5.版本回退**  
+
+ * 先执行切换到想要回滚的分支 git checkout branchName
+ * 查看当前分支的commit日志：git log
+ * 根据commit日志版本回退：git reset --hard commitId(例如：95fe07288032c94b9)
+
+### Git中一些复杂的操作
+
+**1. Merge 合并**  
+
+
+
 
 
 
