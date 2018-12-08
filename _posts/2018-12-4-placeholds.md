@@ -12,7 +12,7 @@ tags:
 
 > 好记性不如烂笔头
 
-### Git一般使用步骤
+### Git快速上手
 
 **1.初始化**  
 
@@ -24,16 +24,16 @@ tags:
   		`git clone https://github.com/shpyoucan/shpyoucan.github.io.git`
   
   * 第二种方法：
-  	* 先判断本地仓库是否已经有关联的远程仓库。  
+   * 先判断本地仓库是否已经有关联的远程仓库。  
   		`git remote -v`  
-  
- 	* 添加远程库  
+  		
+   * 添加远程库  
   		`git remote add origin https://github.com/shpyoucan/shpyoucan.github.io.git`   
   
- 	* 移除远程库  
+   * 移除远程库  
   		`git remote remove origin` 
   		
-  	* origin 是GitHub默认的远程库名字，可以自定义更改	
+   * origin 是GitHub默认的远程库名字，可以自定义更改	
   
 **3.添加忽略文件**
  
@@ -46,11 +46,11 @@ tags:
   
    * 原因：.gitignore只能忽略那些没有被git管理跟踪的文件，如果文件已经被git管理了，那么就算你把文件加入.gitignore中也不会忽略的 
    
-  	* 解决方案：
-  	 * 将缓存区管理的所有文件清除： `git rm -r --cached .` 
-  	 * 将工作区文件重新add到缓存区，此时就会按照.gitignore规则add： `git add .`
-  	 * 更新本地库git管理的文件： `git commit -m 'update .gitignore'`
-  	 * 更新远程库git管理的文件： `git push`  
+  * 解决方案： 
+   * 将缓存区管理的所有文件清除： `git rm -r --cached .`   * 
+   * 将工作区文件重新add到缓存区，此时就会按照.gitignore规则add： `git add .`
+   * 更新本地库git管理的文件： `git commit -m 'update .gitignore'`
+   * 更新远程库git管理的文件： `git push`  
    
    
 **4.添加文件到远程仓库**  
@@ -79,11 +79,18 @@ tags:
  * 查看当前分支的commit日志：git log
  * 根据commit日志版本回退：git reset --hard commitId(例如：95fe07288032c94b9)
 
-### Git中一些复杂的操作
+### Git原理浅白梳理
 
-**1. Merge 合并**  
+### Git中一些常见且重要的命令
 
+**1. Merge 合并**
+   
+ * 多少
 
+**2. diff 差异** 
+ 
+ * git diff : 工作区 和 暂存区 的差异，即工作区相比上次add的改动；
+ * git 
 
 
 
