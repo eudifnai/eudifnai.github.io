@@ -68,72 +68,97 @@ tags:
 
 **5.分支操作**  
 
-  * 创建分支：git branch branchName
-  * 切换分支：git checkout branchName
-  * 合并某分支到主分支：先切换主分支 git checkout masterBranch ; 再合并某分支到主分支 git merge branchName
-  * 删除分支：git branch -d branchName
+  * 创建分支：`git branch branchName`
+  * 切换分支：`git checkout branchName`
+  * 合并某分支到主分支：先切换主分支 `git checkout masterBranch` ; 再合并某分支到主分支 `git merge branchName`
+  * 删除分支：`git branch -d branchName`
 
 **5.版本回退**  
 
- * 先执行切换到想要回滚的分支 git checkout branchName
- * 查看当前分支的commit日志：git log
- * 根据commit日志版本回退：git reset --hard commitId(例如：95fe07288032c94b9)
+ * 先执行切换到想要回滚的分支：`git checkout branchName`
+ * 查看当前分支的commit日志：`git log`
+ * 根据commit日志版本回退：`git reset --hard commitId`(例如：95fe07288032c94b9)
 
-### Git原理浅白梳理
+### Git一些重要的概念介绍
+
+ * Git 项目的三个工作区域的概念：Git 仓库、工作目录以及暂存区域。 
+ 
+  ![git工作区域](../blogImg/git_areas.png)  
+ 
+ * Git文件的三种状态：Git 有三种状态，你的文件可能处于其中之一：已提交（committed）、已修改（modified）和已暂存（staged）。 已提交表示数据已经安全的保存在本地数据库中。 已修改表示修改了文件，但还没保存到数据库中。 已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。  
+ * 请记住，你工作目录下的每一个文件都不外乎这两种状态：已跟踪或未跟踪。 已跟踪的文件是指那些被纳入了版本控制的文件，在上一次快照中有它们的记录，在工作一段时间后，它们的状态可能处于未修改，已修改或已放入暂存区。 工作目录中除已跟踪文件以外的所有其它文件都属于未跟踪文件，它们既不存在于上次快照的记录中，也没有放入暂存区。 初次克隆某个仓库的时候，工作目录中的所有文件都属于已跟踪文件，并处于未修改状态。  
+编辑过某些文件之后，由于自上次提交后你对它们做了修改，Git 将它们标记为已修改文件。 我们逐步将这些修改过的文件放入暂存区，然后提交所有暂存了的修改，如此反复。所以使用 Git 时文件的生命周期如下： 
+
+ ![](../blogImg/git_lifecycle.png)
+
+ *  基本的 Git 工作流程
+   *  在工作目录中修改文件；
+   *  暂存文件，将文件的快照放入暂存区域；
+   *  提交更新，找到暂存区域的文件，将快照永久性存储到 Git 仓库目录。
 
 ### Git中一些常见且重要的命令
 
 **1. Merge 合并**
    
- * 多少
+ * 作用 : 用于从指定的commit(s)合并到当前分支的操作;
 
 **2. diff 差异** 
  
- * git diff : 工作区 和 暂存区 的差异，即工作区相比上次add的改动；
- * git diff --cached : 暂缓区 和 本地版本库 的差异，即暂存区相比上次的commit的改动；
- * git diff HEAD : 工作区 和 本地版本库 的差异，即工作区相比上次commit的改动；
+ * `git diff` : 工作区 和 暂存区 的差异，即工作区相比上次add的改动；
+ * `git diff --cached` : 暂缓区 和 本地版本库 的差异，即暂存区相比上次的commit的改动；
+ * `git diff HEAD` : 工作区 和 本地版本库 的差异，即工作区相比上次commit的改动；
 
 **3. log 日志** 
 
- * git log --pretty=oneline --graph : 将每个提交放在一行显示，形象展现分支合并的流程（推荐配合 git show commitId 使用）；
- * git log : 会按提交时间列出所有的更新，最近的更新排在最上面，这个命令会列出每个提交的 SHA-1 校验和、作者的名字和电子邮件地址、提交时间以及提交说明；
- * git log -p : 显示列出所有提交的细节，最近的更新排在最上面；
+ * `git log --pretty=oneline --graph` : 将每个提交放在一行显示，形象展现分支合并的流程（推荐配合 git show commitId 使用）；
+ * `git log` : 会按提交时间列出所有的更新，最近的更新排在最上面，这个命令会列出每个提交的 SHA-1 校验和、作者的名字和电子邮件地址、提交时间以及提交说明；
+ * `git log -p` : 显示列出所有提交的细节，最近的更新排在最上面；
 
 **4. 版本回退** 
 
- * git commit --amend -m : "重新填写记录描述" : 覆盖上次commit的记录描述；
- * git checkout -- <file> : 回退工作区的修改，即工作区跟暂存区最后一次commit保持一致；
- * git reset HEAD <file> : 回退暂存区的add，即使得暂存区跟本地版本库最后一次commit保持一致；
+ * `git commit --amend -m` : "重新填写记录描述" : 覆盖上次commit的记录描述；
+ * `git checkout -- <file>` : 回退工作区的修改，即工作区跟暂存区最后一次commit保持一致；
+ * `git reset HEAD <file>` : 回退暂存区的add，即使得暂存区跟本地版本库最后一次commit保持一致；
 
 **4. 远程库** 
 
  * `git remote -v` : 显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL;
- * git remote add <shortname> <url> : 添加一个新的远程 Git 仓库，同时指定一个你可以轻松引用的简写;
- * git fetch [remote-name] : 会将数据拉取到你的本地仓库 - 它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作;
- * git pull : 命令来自动的抓取然后合并远程分支到当前分支;
- * git push [remote-name] [branch-name] : 推送到远程仓库;
- * git remote show [remote-name] : 查看某一个远程仓库的更多信息;
- * git remote rename [oldshortname] [newshortname] : 修改一个远程仓库的简写名,注意的是这同样也会修改你的远程分支名字;
- * git remote rm [shortname] : 移除一个远程仓库;
+ * `git remote add <shortname> <url> `: 添加一个新的远程 Git 仓库，同时指定一个你可以轻松引用的简写;
+ * `git fetch [remote-name]` : 会将数据拉取到你的本地仓库 - 它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作;
+ * `git pull` : 命令来自动的抓取然后合并远程分支到当前分支;
+ * `git push [remote-name] [branch-name]` : 推送到远程仓库;
+ * `git remote show [remote-name]` : 查看某一个远程仓库的更多信息;
+ * `git remote rename [oldshortname] [newshortname]` : 修改一个远程仓库的简写名,注意的是这同样也会修改你的远程分支名字;
+ * `git remote rm [shortname]` : 移除一个远程仓库;
 
+**5. Tag 标签** 
 
+ * `git tag` : 列出已有的标签;
+ * `git tag -l 'v1.8.5*'` : 列出含 1.8.5 系列的标签;
+ * `git tag -a v1.4 -m 'my version 1.4'` : 附注标签;
+ * `git tag v1.4-lw` : 轻量标签;
+ * `git tag -a v1.2 commitId` : 要在commitId提交上打标签;
+ * `git push origin [tagname]` : 推送[tagname]标签到远程仓库服务器;
+ * `git push origin --tags` : 把所有不在远程仓库服务器上的标签全部传送到那里;
+ * `git checkout -b [branchname] [tagname]` : 在特定的标签上创建一个新分支来检出标签;
 
+**5. 别名** 
 
-commit：
-请记住，提交时记录的是放在暂存区域的快照。 任何还未暂存的仍然保持已修改状态，可以在下次提交时纳入版本管理。 每一次运行提交操作，都是对你项目作一次快照，以后可以回到这个状态，或者进行比较。
+ * `git config --global alias.ci commit` : 当要输入 git commit 时，只需要输入 git ci;
+ * `git config --global alias.visual '!gitk'` : 你可能想要执行外部命令，而不是一个 Git 子命令。 如果是那样的话，可以在命令前面加入 ! 符号，将 `git visual` 定义为 gitk 的别名;
+
+### Git中零散知识
+
+commit：请记住，提交时记录的是放在暂存区域的快照。 任何还未暂存的仍然保持已修改状态，可以在下次提交时纳入版本管理。 每一次运行提交操作，都是对你项目作一次快照，以后可以回到这个状态，或者进行比较。
 
 rm:
 要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除（确切地说，是从暂存区域移除），然后提交。 可以用 git rm 命令完成此项工作，并连带从工作目录中删除指定的文件，这样以后就不会出现在未跟踪文件清单中了。
 
-如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 “Changes not staged for commit” 部分（也就是 未暂存清单）
+如果只是简单地从工作目录中手工删除文件，运行 `git status` 时就会在 “Changes not staged for commit” 部分（也就是 未暂存清单）
 
 下一次提交时，该文件就不再纳入版本管理了。 如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 -f（译注：即 force 的首字母）。 这是一种安全特性，用于防止误删还没有添加到快照的数据，这样的数据不能被 Git 恢复。
+另外一种情况是，我们想把文件从 Git 仓库中删除（亦即从暂存区域移除），但仍然希望保留在当前工作目录中。 换句话说，你想让文件保留在磁盘，但是并不想让 Git 继续跟踪。 当你忘记添加 .gitignore 文件，不小心把一个很大的日志文件或一堆 .a 这样的编译生成文件添加到暂存区时，这一做法尤其有用。 为达到这一目的，使用 --cached 选项：`git rm --cached README`
 
-另外一种情况是，我们想把文件从 Git 仓库中删除（亦即从暂存区域移除），但仍然希望保留在当前工作目录中。 换句话说，你想让文件保留在磁盘，但是并不想让 Git 继续跟踪。 当你忘记添加 .gitignore 文件，不小心把一个很大的日志文件或一堆 .a 这样的编译生成文件添加到暂存区时，这一做法尤其有用。 为达到这一目的，使用 --cached 选项：
-$ git rm --cached README
-
-git rm 命令后面可以列出文件或者目录的名字，也可以使用 glob 模式。 比方说：
-$ git rm log/\*.log
-注意到星号 * 之前的反斜杠 \， 因为 Git 有它自己的文件模式扩展匹配方式，所以我们不用 shell 来帮忙展开。 此命令删除 log/ 目录下扩展名为 .log 的所有文件。 类似的比如：
-$ git rm \*~
+git rm 命令后面可以列出文件或者目录的名字，也可以使用 glob 模式。 比方说： `git rm log/\*.log`
+注意到星号 * 之前的反斜杠 \， 因为 Git 有它自己的文件模式扩展匹配方式，所以我们不用 shell 来帮忙展开。 此命令删除 log/ 目录下扩展名为 .log 的所有文件。 类似的比如：`git rm \*~`
 该命令为删除以 ~ 结尾的所有文件。
