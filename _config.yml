@@ -105,5 +105,8 @@ friends: [
     },{
         title: "Apple Developer",
         href: "https://developer.apple.com/"
+    },{
+        title: "App Store 审核指南",
+        href: "https://developer.apple.com/cn/app-store/review/guidelines/"
     }
 ]
