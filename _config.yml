@@ -1,17 +1,17 @@
 # Site settings
-title: 沈和平 博客主站
-SEOTitle: 沈和平的博客 | ShenHeping Blog
+title: 滕志东 空间站
+SEOTitle: 滕志东的博客 | tengzhidong Blog
 header-img: img/post-bg-desk.jpg
 email: shpyoucan@163.com
-description: "生活不止眼前的苟且，还有诗和远方！"
-keyword: "ShenHeping, shpyoucan, henHeping Blog, 沈和平的博客, shenheping, 沈和平, iOS, Apple, iPhone"
-url: "http://shpyoucan.github.io"          # your host, for absolute URL
+description: "一念决定行为，一切仅需一念，成败皆在一念！————— 《一念之力》"
+keyword: "Teng Zhidong, tzdom, tengzhidong Blog, 滕志东的博客, tengzhidong, 滕志东, iOS, Apple, iPhone"
+url: "http://eudifnai.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/shpyoucan/shpyoucan.github.io" # you code repository
+github_repo: "https://github.com/eudifnai/eudifnai.github.io" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "生活不止眼前的苟且，还有诗和远方!"
+sidebar-about-description: "一念决定行为，一切仅需一念，成败皆在一念！————— 《一念之力》"
 sidebar-avatar: /img/headerImage.jpg     # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -63,9 +63,9 @@ gitalk:
   enable: false    #是否开启Gitalk评论
   clientID: f2c84e7629bb1446c1a4                            #生成的clientID
   clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
-  repo: shpyoucan.github.io    #仓库名称
-  owner: ShenHeping    #github用户名
-  admin: shenheping
+  repo: eudifnai.github.io    #仓库名称
+  owner: eudifnai    #github用户名
+  admin: eudifnai
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
@@ -97,9 +97,6 @@ service-worker: true
 # Friends
 friends: [
    {
-        title: "博客园·shpyoucan",
-        href: "https://www.cnblogs.com/shpyoucan/"
-    },{
         title: "Apple",
         href: "https://apple.com"
     },{
