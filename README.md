@@ -1,2 +1,2 @@
-# shpyoucan.github.io
-沈和平的个人博客
+# eudifnai.github.io
+滕志东的个人博客
